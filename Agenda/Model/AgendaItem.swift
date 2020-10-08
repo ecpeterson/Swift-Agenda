@@ -13,7 +13,7 @@ struct AgendaItem: Codable {
     var complete_p: Bool = false
     var repeat_p: RepeatT = .never
     var frequency: Int = 1
-    var date: Date = Date()
+    var date: DateOnly = DateOnly()
     var priority: Int = 2
     var id: String = "defaultId"
 }
@@ -26,30 +26,53 @@ enum RepeatT: String, Codable {
     case never
 }
 
+extension Formatter {
+    static let date = DateFormatter()
+}
+
+extension Date {
+    func localizedDescription(dateStyle: DateFormatter.Style = .short,
+                              timeStyle: DateFormatter.Style = .none,
+                           in timeZone : TimeZone = .current,
+                              locale   : Locale = .current) -> String {
+        Formatter.date.locale = locale
+        Formatter.date.timeZone = timeZone
+        Formatter.date.dateStyle = dateStyle
+        Formatter.date.timeStyle = timeStyle
+        return Formatter.date.string(from: self)
+    }
+    var localizedDescription: String { localizedDescription() }
+}
+
 // expects agendaItems to be date-sorted
-func groupByDate(agendaItems: [AgendaItem]) -> [(Date, [AgendaItem])] {
-    var buckets: [(Date, [AgendaItem])] = []
+func groupByDate(agendaItems: [AgendaItem]) -> [(DateOnly, [AgendaItem])] {
+    var buckets: [(DateOnly, [AgendaItem])] = []
     var this_bucket: [AgendaItem] = []
-    var this_date: Date = Date()
+    var this_date: DateOnly = DateOnly()
+    let now = DateOnly()
+    
+    func dump_bucket() {
+        if this_bucket.count != 0 || this_date == now {
+            buckets.append((this_date, this_bucket))
+        }
+        this_bucket = []
+    }
     
     for item in agendaItems {
         // if we're about to trip the odometer...
         if item.date != this_date {
-            // dump out the old bucket
-            if this_bucket.count != 0 {
-                buckets.append((this_date, this_bucket))
-                this_bucket = []
+            dump_bucket()
+            if this_date < now && item.date > now {
+                this_date = now
+            } else {
+                this_date = item.date
             }
-            
-            this_date = item.date
         }
         
         this_bucket.append(item)
     }
     
-    if this_bucket.count != 0 {
-        buckets.append((this_date, this_bucket))
-    }
+    dump_bucket()
     
     return buckets
 }

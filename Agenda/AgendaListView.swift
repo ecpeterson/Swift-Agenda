@@ -7,22 +7,44 @@
 
 import SwiftUI
 
-extension Formatter {
-    static let date = DateFormatter()
-}
-
-extension Date {
-    func localizedDescription(dateStyle: DateFormatter.Style = .short,
-                              timeStyle: DateFormatter.Style = .none,
-                           in timeZone : TimeZone = .current,
-                              locale   : Locale = .current) -> String {
-        Formatter.date.locale = locale
-        Formatter.date.timeZone = timeZone
-        Formatter.date.dateStyle = dateStyle
-        Formatter.date.timeStyle = timeStyle
-        return Formatter.date.string(from: self)
+struct AgendaListBlockView: View {
+    var dateOnly: DateOnly
+    var agendaMiniList: [AgendaItem]
+    var refreshHook: (() -> ())
+    
+    let header: Text
+    
+    init(dateOnly: DateOnly,
+         agendaMiniList: [AgendaItem],
+         refreshHook: @escaping () -> ()) {
+        self.dateOnly = dateOnly
+        self.agendaMiniList = agendaMiniList
+        self.refreshHook = refreshHook
+        
+        self.header = dateOnly == DateOnly() ?
+            Text("\(Date(dateOnly: dateOnly).localizedDescription) - Today's Date").bold() :
+            Text(Date(dateOnly: dateOnly).localizedDescription)
     }
-    var localizedDescription: String { localizedDescription() }
+    
+    var body: some View {
+        Section(header: header) {
+            ForEach(agendaMiniList, id: \.id) {
+                agendaItem in
+                NavigationLink(destination: AgendaDetailEditView(item: agendaItem)) {
+                    AgendaRowView(item: agendaItem, onUpdate: refreshHook)
+                }
+            }.onDelete(perform: deleteFunc)
+        }
+    }
+    
+    func deleteFunc(at indexSet: IndexSet) {
+        // TODO: implement delete call
+        for index in indexSet {
+            print(agendaMiniList[index].id)
+        }
+        
+        return refreshHook()
+    }
 }
 
 struct AgendaListView: View {
@@ -33,15 +55,10 @@ struct AgendaListView: View {
             List {
                 ForEach(groupByDate(agendaItems: agendaList),
                         id: \.0) {
-                    (date, agendaMiniList) in
-                    Section(header: Text(date.localizedDescription)) {
-                        ForEach(agendaMiniList, id: \.id) {
-                            agendaItem in
-                            NavigationLink(destination: AgendaDetailEditView(item: agendaItem)) {
-                                AgendaRowView(item: agendaItem, onUpdate: self.refreshList)
-                            }
-                        }.onDelete(perform: { deleteFunc(at: $0, in: agendaMiniList) })
-                    }
+                    (dateOnly, agendaMiniList) in
+                    AgendaListBlockView(dateOnly: dateOnly,
+                                        agendaMiniList: agendaMiniList,
+                                        refreshHook: refreshList)
                 }
             }
             .navigationBarItems(trailing: NavigationLink(destination: AgendaDetailNewView()) {
@@ -49,15 +66,6 @@ struct AgendaListView: View {
             })
             .navigationBarTitle(Text("Agenda"))
         }.onAppear(perform: refreshList)
-    }
-    
-    func deleteFunc(at indexSet: IndexSet, in largerList: [AgendaItem]) {
-        // TODO: implement delete call
-        for index in indexSet {
-            print(largerList[index].id)
-        }
-        
-        return refreshList()
     }
     
     func addNew() {

@@ -53,7 +53,7 @@ struct AgendaRowView: View {
         let current_date = Date()
         let days_til_due = calendar.dateComponents(
             [.day],
-            from: current_date, to:self.item.date).day!
+            from: current_date, to:Date(dateOnly: self.item.date)).day!
         
         if days_til_due < 0 {
             return Color.purple

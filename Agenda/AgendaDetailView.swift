@@ -10,6 +10,12 @@ import Combine
 
 struct AgendaDetailView: View {
     @State var item: AgendaItem
+    @State var localDate: Date
+    
+    init(item: AgendaItem) {
+        self._item = .init(initialValue: item)
+        self._localDate = .init(initialValue: Date(dateOnly: item.date))
+    }
     
     var body: some View {
         VStack {
@@ -18,7 +24,7 @@ struct AgendaDetailView: View {
             
             Divider()
             
-            DatePicker("Date", selection: $item.date,
+            DatePicker("Date", selection: $localDate,
                        displayedComponents: .date)
                 .datePickerStyle(CompactDatePickerStyle())
             
