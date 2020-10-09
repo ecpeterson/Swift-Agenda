@@ -1,0 +1,39 @@
+{
+	"name": "agenda",
+	"version": "0.0.1",
+	"description": "Backend for storing to-do lists",
+	"license": "NCSA",
+	"bugs": {
+		"url": "http://github.com/ecpeterson/Agenda-Swift/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/ecpeterson/"
+	},
+	"author": {
+		"name": "Eric Peterson",
+		"email": "peterson.eric.c@gmail.com",
+		"url": "https://github.com/ecpeterson/Agenda-Swift.git"
+	},
+	"config": {
+		"port": "8080"
+	},
+	"main": "server.js",
+	"dependencies": {
+		"bcrypt-nodejs": "*",
+		"body-parser": "*",
+		"connect-flash": "*",
+		"cookie-parser": "*",
+		"express": "*",
+		"express-session": "*",
+		"markdown": "*",
+		"method-override": "*",
+		"mongoose": "*",
+		"morgan": "*",
+		"passport": "*",
+		"passport-facebook": "*",
+		"passport-google-oauth": "*",
+		"passport-local": "*",
+		"passport-twitter": "*"
+	}
+}

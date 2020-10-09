@@ -1,3 +1,7 @@
 Agenda.xcodeproj/project.xcworkspace/
 Agenda.xcodeproj/xcuserdata/
 *.app
+*.sublime-*
+Agenda-Server/data
+Agenda-Server/node_modules/
+Agenda-Server/package-lock.json
