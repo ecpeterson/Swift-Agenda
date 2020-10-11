@@ -7,12 +7,15 @@
 
 // SET UP =====================================================================
 var express = require('express'),
-	path = require('path'),
+    path = require('path'),
     app = express(),
-    port = process.env.PORT || 8080,
+    port = process.env.PORT || 8081,
+    ssl_port = process.env.SSL_PORT || 8082,
     mongoose = require('mongoose'),
     passport = require('passport'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    https = require('https'),
+    fs = require('fs');
 
 var morgan = require('morgan'),
     cookieParser = require('cookie-parser'),
@@ -23,6 +26,12 @@ var configDB = require('./config/database.js');
 var configPASSPORT = require('./config/passport.js');
 
 // CONFIGURATION ==============================================================
+
+// ssl options
+ssl_options = {
+  key: fs.readFileSync("config/ssl/my-site-key.pem"),
+  cert: fs.readFileSync("config/ssl/chain.pem")
+};
 
 // connect to the database
 mongoose.connect(configDB.url);
@@ -52,4 +61,5 @@ require('./app/routes/todo.js')(app);
 // LAUNCH =====================================================================
 
 app.listen(port);
-console.log('Now listening on port ' + port + '.');
+https.createServer(ssl_options, app).listen(ssl_port);
+console.log('Now listening on http port ' + port + ', https port ' + ssl_port + '.');
