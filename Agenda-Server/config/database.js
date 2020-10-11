@@ -5,5 +5,5 @@
 // prevent malicious users from accessing the database.
 
 module.exports = {
-	'url' : 'mongodb://localhost:27017/agenda',
+	'url' : 'mongodb://localhost:27018/agenda',
 }

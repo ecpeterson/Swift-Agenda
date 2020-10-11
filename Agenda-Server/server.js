@@ -9,8 +9,8 @@
 var express = require('express'),
     path = require('path'),
     app = express(),
-    port = process.env.PORT || 8081,
-    ssl_port = process.env.SSL_PORT || 8082,
+    port = process.env.PORT || 8090,
+    ssl_port = process.env.SSL_PORT || 8091,
     mongoose = require('mongoose'),
     passport = require('passport'),
     flash = require('connect-flash'),
@@ -29,8 +29,9 @@ var configPASSPORT = require('./config/passport.js');
 
 // ssl options
 ssl_options = {
-  key: fs.readFileSync("config/ssl/my-site-key.pem"),
-  cert: fs.readFileSync("config/ssl/chain.pem")
+      key: fs.readFileSync('config/ssl/privkey.pem'),
+      cert: fs.readFileSync('config/ssl/cert.pem'),
+      ca: fs.readFileSync('config/ssl/chain.pem')
 };
 
 // connect to the database

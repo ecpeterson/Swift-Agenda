@@ -80,6 +80,8 @@ struct AgendaListView: View {
         }
     }
     
+    // NOTE: may not actually refresh existing items
+    //       ex: make a pri 2 item expiring today, change its pri to 0
     func refreshList() {
         settings.cxn.refresh(
             doneCallback: {response in

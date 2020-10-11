@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mongod --dbpath ./data &>/dev/null &
+mongod --port 27018 --dbpath ./data &>/dev/null &
 
 pid=$!
 

@@ -18,7 +18,7 @@ enum ServerCommsError: Error {
 class ServerConnection: ObservableObject {
     // COMMUNICATION CONFIGURATION =============================================
     
-    let baseURL = URL(string: "http://10.0.0.223:8080")
+    let baseURL = URL(string: "https://agenda.chromotopy.org:8091")
     let session = URLSession(configuration: .default)
     
     // COMMUNICATION WRAPPERS ==================================================
@@ -130,7 +130,7 @@ class ServerConnection: ObservableObject {
                 }
             }
         } catch let error {
-           return errorCallback?(error) ?? ()
+            return errorCallback?(error) ?? ()
         }
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
