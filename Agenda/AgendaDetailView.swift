@@ -8,44 +8,55 @@
 import SwiftUI
 import Combine
 
-struct AgendaDetailView: View {
-    @State var item: AgendaItem
-    @State var localDate: Date
-    
-    init(item: AgendaItem) {
-        self._item = .init(initialValue: item)
-        self._localDate = .init(initialValue: Date(dateOnly: item.date))
+// from https://stackoverflow.com/a/63967389/464405
+struct IntField: View {
+    @Binding var int: Int
+    @State private var intString: String  = ""
+    var body: some View {
+        return TextField("", text: $intString)
+            .onReceive(Just(intString)) { value in
+                if let i = Int(value) { int = i }
+                else { intString = "\(int)" }
+            }
+            .onAppear(perform: {
+                intString = "\(int)"
+            })
+            .multilineTextAlignment(.trailing)
     }
+}
+
+struct AgendaDetailView: View {
+    @Binding var item: AgendaItem
     
     var body: some View {
+        let localDate = Binding<Date>(get: {
+            Date(dateOnly: self.item.date)
+        }, set: { newValue in
+            self.item.date = DateOnly(date: newValue)
+        })
+        
         VStack {
             TextField("To-do item", text: $item.text)
             Toggle("Completed", isOn: $item.complete_p)
             
             Divider()
             
-            DatePicker("Date", selection: $localDate,
+            DatePicker("Date", selection: localDate,
                        displayedComponents: .date)
                 .datePickerStyle(CompactDatePickerStyle())
             
             HStack {
                 Text("Days until urgent:")
-                
-                TextField("", value: $item.priority,
-                          formatter: NumberFormatter())
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+                // TODO: this isn't being updated.
+                IntField(int: $item.priority)
             }
             
             Divider()
             
             HStack {
                 Text("Repeat every")
-                
-                TextField("", value: $item.frequency,
-                          formatter: NumberFormatter())
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+                // TODO: this isn't being updated.
+                IntField(int: $item.frequency)
             }
             
             HStack {
@@ -65,10 +76,12 @@ struct AgendaDetailView: View {
 
 struct AgendaDetailEditView: View {
     @State var item: AgendaItem
+    @EnvironmentObject var settings: UserSettings
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
-            AgendaDetailView(item: item)
+            AgendaDetailView(item: $item)
             Spacer()
             HStack {
                 Spacer()
@@ -83,48 +96,69 @@ struct AgendaDetailEditView: View {
         }
         .padding()
         .navigationBarTitle(Text("Item details"), displayMode: .inline)
+        .navigationBarItems(trailing: Button("Confirm", action: update))
     }
     
     func delete() {
-        // send delete message to server
-        // navigate up from this screen
-        return
+        settings.cxn.delete(
+            todo: item,
+            doneCallback: { _ in
+                DispatchQueue.main.async {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            })
     }
     
     func forward() {
-        // send forward message to server
-        // navigate up from this screen
-        return
+        settings.cxn.forward(
+            todo: item,
+            doneCallback: { _ in
+                DispatchQueue.main.async {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            })
+    }
+    
+    func update() {
+        settings.cxn.update(
+            todo: item,
+            doneCallback: { _ in
+                DispatchQueue.main.async {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            })
     }
 }
 
 struct AgendaDetailNewView: View {
     @State var item: AgendaItem = AgendaItem()
+    @EnvironmentObject var settings: UserSettings
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
-            AgendaDetailView(item: item)
+            AgendaDetailView(item: $item)
             Spacer()
-            HStack {
-                Spacer()
-                Button(action: delete) {
-                    Image(systemName: "trash")
-                }
-            }
         }
-        .padding()
-        .navigationBarTitle(Text("New item"), displayMode: .inline)
+            .padding()
+            .navigationBarTitle(Text("New item"), displayMode: .inline)
+            .navigationBarItems(
+                trailing: Button("Confirm", action: commit))
     }
     
-    func delete() {
-        // send delete message to server
-        // navigate up from this screen
-        return
+    func commit() {
+        settings.cxn.new(
+            todo: item,
+            doneCallback: { _ in
+                DispatchQueue.main.async {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            })
     }
 }
 
 struct AgendaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        AgendaDetailView(item: agendaData[0])
+        AgendaDetailView(item: .constant(agendaData[0]))
     }
 }

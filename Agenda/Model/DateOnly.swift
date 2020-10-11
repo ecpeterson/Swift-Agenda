@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateOnly: Codable, Hashable {
+struct DateOnly: Hashable {
     var year: Int
     var month: Int
     var day: Int
@@ -31,7 +31,7 @@ struct DateOnly: Codable, Hashable {
     }
     
     func int() -> Int {
-        return (self.year * 12 + self.month) * 31 + self.day
+        return (self.year * 15 + self.month) * 35 + self.day
     }
 }
 
@@ -42,6 +42,21 @@ extension DateOnly: Comparable {
     
     static func == (lhs: DateOnly, rhs: DateOnly) -> Bool {
         return lhs.int() == rhs.int()
+    }
+}
+
+extension DateOnly: Codable {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.int())
+    }
+    
+    init(from decoder: Decoder) throws {
+        let int = try decoder.singleValueContainer().decode(Int.self)
+        let day = int % 35
+        let month = ((int - day) / 35) % 15
+        let year = (int - day - 35 * month) / (35 * 15)
+        self.init(year: year, month: month, day: day)
     }
 }
 

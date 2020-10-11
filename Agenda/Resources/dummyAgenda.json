@@ -5,12 +5,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "oisufg",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 7
-        }
+        "_id": "oisufg",
+        "date": 1060859
     },
     {
         "text": "Zeroth item",
@@ -18,12 +14,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "lwkjefl",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 8
-        }
+        "_id": "lwkjefl",
+        "date": 1060860
     },
     {
         "text": "First item",
@@ -31,12 +23,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "lakjdsflj",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 10
-        }
+        "_id": "lakjdsflj",
+        "date": 1060862
     },
     {
         "text": "Second item",
@@ -44,12 +32,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "lsdjf",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 12
-        }
+        "_id": "lsdjf",
+        "date": 1060864
     },
     {
         "text": "Second item prime",
@@ -57,12 +41,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "dfgsdfg",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 12
-        }
+        "_id": "dfgsdfg",
+        "date": 1060864
     },
     {
         "text": "Second item prime prime",
@@ -70,12 +50,8 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "awef",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 12
-        }
+        "_id": "awef",
+        "date": 1060864
     },
     {
         "text": "Third item",
@@ -83,11 +59,7 @@
         "repeat_p": "daily",
         "frequency": 1,
         "priority": 2,
-        "id": "osiduf",
-        "date": {
-            "year": 2020,
-            "month": 10,
-            "day": 15
-        }
+        "_id": "osiduf",
+        "date": 1060866
     }
 ]

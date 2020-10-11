@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AgendaListBlockView: View {
+    @EnvironmentObject var settings: UserSettings
+    
     var dateOnly: DateOnly
     var agendaMiniList: [AgendaItem]
     var refreshHook: (() -> ())
@@ -28,7 +30,7 @@ struct AgendaListBlockView: View {
     
     var body: some View {
         Section(header: header) {
-            ForEach(agendaMiniList, id: \.id) {
+            ForEach(agendaMiniList, id: \._id) {
                 agendaItem in
                 NavigationLink(destination: AgendaDetailEditView(item: agendaItem)) {
                     AgendaRowView(item: agendaItem, onUpdate: refreshHook)
@@ -37,18 +39,26 @@ struct AgendaListBlockView: View {
         }
     }
     
+    // TODO: the "delete" is actually a forward, which is the right default
+    //       behavior but looks weird in the UI, which says "delete"
     func deleteFunc(at indexSet: IndexSet) {
-        // TODO: implement delete call
         for index in indexSet {
-            print(agendaMiniList[index].id)
+            settings.cxn.forward(
+                todo: agendaMiniList[index],
+                doneCallback: { _ in
+                    refreshHook()
+                })
         }
-        
-        return refreshHook()
     }
 }
 
 struct AgendaListView: View {
-    var agendaList = agendaData
+    @State var agendaList: [AgendaItem] = []
+    @EnvironmentObject var settings: UserSettings
+    
+    init(agendaList: [AgendaItem] = []) {
+        self.agendaList = agendaList
+    }
     
     var body: some View {
         NavigationView {
@@ -58,27 +68,37 @@ struct AgendaListView: View {
                     (dateOnly, agendaMiniList) in
                     AgendaListBlockView(dateOnly: dateOnly,
                                         agendaMiniList: agendaMiniList,
-                                        refreshHook: refreshList)
+                                        refreshHook: self.refreshList)
+                        .listStyle(GroupedListStyle())
                 }
             }
             .navigationBarItems(trailing: NavigationLink(destination: AgendaDetailNewView()) {
                     Image(systemName: "plus")
             })
+            .onAppear(perform: refreshList)
             .navigationBarTitle(Text("Agenda"))
-        }.onAppear(perform: refreshList)
-    }
-    
-    func addNew() {
-        // TODO: switch to a New Item panel
+        }
     }
     
     func refreshList() {
-        // TODO: refresh the local data
+        settings.cxn.refresh(
+            doneCallback: {response in
+                guard let response = response["todos"] else {
+                    return self.refreshList()
+                }
+                
+                let sortedItems = response.sorted(by: { $0.date < $1.date })
+
+                DispatchQueue.main.async {
+                    self.agendaList = sortedItems
+                }
+            })
     }
 }
 
+// TODO: I think I broke this
 struct AgendaListView_Previews: PreviewProvider {
     static var previews: some View {
-        AgendaListView()
+        AgendaListView(agendaList: agendaData)
     }
 }

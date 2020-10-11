@@ -19,6 +19,8 @@
 		383A6EFB252D584600D08BAE /* AgendaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A6EFA252D584600D08BAE /* AgendaRowView.swift */; };
 		383A6F00252D669900D08BAE /* AgendaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A6EFF252D669900D08BAE /* AgendaListView.swift */; };
 		389169E3252F9F5800389A1B /* DateOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E2252F9F5800389A1B /* DateOnly.swift */; };
+		389169E82530CEE600389A1B /* ServerComms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E72530CEE600389A1B /* ServerComms.swift */; };
+		38916A0725320FF000389A1B /* AgendaLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38916A0625320FF000389A1B /* AgendaLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +58,9 @@
 		383A6EEB252D563100D08BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		383A6EFA252D584600D08BAE /* AgendaRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaRowView.swift; sourceTree = "<group>"; };
 		383A6EFF252D669900D08BAE /* AgendaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaListView.swift; sourceTree = "<group>"; };
-		389169E2252F9F5800389A1B /* DateOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateOnly.swift; path = Model/DateOnly.swift; sourceTree = "<group>"; };
+		389169E2252F9F5800389A1B /* DateOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnly.swift; sourceTree = "<group>"; };
+		389169E72530CEE600389A1B /* ServerComms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerComms.swift; sourceTree = "<group>"; };
+		38916A0625320FF000389A1B /* AgendaLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				3834CEA1252E265600EEFAA6 /* AgendaItem.swift */,
+				389169E72530CEE600389A1B /* ServerComms.swift */,
 				3834CEA7252E287000EEFAA6 /* DumbLoader.swift */,
+				389169E2252F9F5800389A1B /* DateOnly.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,9 +133,9 @@
 				3834CEAF252E28EE00EEFAA6 /* Resources */,
 				3834CEA6252E265B00EEFAA6 /* Model */,
 				383A6ECC252D563000D08BAE /* AgendaApp.swift */,
+				38916A0625320FF000389A1B /* AgendaLoginView.swift */,
 				383A6EFA252D584600D08BAE /* AgendaRowView.swift */,
 				383A6EFF252D669900D08BAE /* AgendaListView.swift */,
-				389169E2252F9F5800389A1B /* DateOnly.swift */,
 				3834CEB5252E410D00EEFAA6 /* AgendaDetailView.swift */,
 				383A6ED0252D563100D08BAE /* Assets.xcassets */,
 				383A6ED5252D563100D08BAE /* Info.plist */,
@@ -296,9 +302,11 @@
 			files = (
 				383A6F00252D669900D08BAE /* AgendaListView.swift in Sources */,
 				383A6EFB252D584600D08BAE /* AgendaRowView.swift in Sources */,
+				389169E82530CEE600389A1B /* ServerComms.swift in Sources */,
 				389169E3252F9F5800389A1B /* DateOnly.swift in Sources */,
 				383A6ECD252D563000D08BAE /* AgendaApp.swift in Sources */,
 				3834CEA8252E287000EEFAA6 /* DumbLoader.swift in Sources */,
+				38916A0725320FF000389A1B /* AgendaLoginView.swift in Sources */,
 				3834CEA2252E265600EEFAA6 /* AgendaItem.swift in Sources */,
 				3834CEB6252E410D00EEFAA6 /* AgendaDetailView.swift in Sources */,
 			);

@@ -41,6 +41,7 @@ struct MyToggleStyle: ToggleStyle {
 }
 
 struct AgendaRowView: View {
+    @EnvironmentObject var settings: UserSettings
     @State var item: AgendaItem
     var onUpdate: (() -> ())?
     
@@ -75,18 +76,23 @@ struct AgendaRowView: View {
     }
     
     var body: some View {
+        let toggleBinding = Binding<Bool>(get: {
+            self.item.complete_p
+        }, set: { newValue in
+            self.item.complete_p = newValue
+            settings.cxn.update(
+                todo: item,
+                doneCallback: { _ in
+                    if let unwrapFunc = onUpdate {
+                        unwrapFunc()
+                    }
+                })
+        })
+        
         // use .contextMenu for actions?
-        Toggle(item.text, isOn: $item.complete_p)
+        Toggle(item.text, isOn: toggleBinding)
             .toggleStyle(MyToggleStyle(offColor: self.alertColor()))
-            .onChange(of: true, perform: self.update)
         // TODO: toggle click needs to send an edit update and cause a refresh
-    }
-    
-    func update (value: Bool) {
-        // TODO: send up the edit signal
-        if onUpdate != nil {
-            onUpdate!()
-        }
     }
 }
 

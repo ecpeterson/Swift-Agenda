@@ -7,12 +7,26 @@
 
 import SwiftUI
 
+class UserSettings: ObservableObject {
+    @Published var loggedIn : Bool = false
+    var cxn: ServerConnection = ServerConnection()
+    
+    // TODO: on init, test whether logged in by a server query
+}
+
 @main
 struct AgendaApp: App {
+    @StateObject var settings: UserSettings = UserSettings()
+    
     var body: some Scene {
         WindowGroup {
-            // TODO: deal with sign-on
-            AgendaListView()
+            if settings.loggedIn {
+                AgendaListView()
+                    .environmentObject(settings)
+            } else {
+                AgendaLoginView()
+                    .environmentObject(settings)
+            }
         }
     }
 }

@@ -7,9 +7,9 @@ module.exports = function(app, passport) {
 	// CHECK LOGIN STATUS ======================================================
 	app.get('/', function(req, res) {
 		if (req.user) {
-			return res.json({ loggedIn: true, id: req.user.id });
+			return res.json({ loggedIn: "true", id: req.user.id });
 		} else {
-			return res.json({ loggedIn: false });
+			return res.json({ loggedIn: "false" });
 		}
 	});
 
