@@ -35,6 +35,7 @@ struct AgendaListBlockView: View {
                 NavigationLink(destination: AgendaDetailEditView(item: agendaItem)) {
                     AgendaRowView(item: agendaItem, onUpdate: refreshHook)
                 }
+                .padding(.vertical, -10)
             }.onDelete(perform: deleteFunc)
         }
     }
