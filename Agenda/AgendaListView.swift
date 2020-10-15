@@ -35,9 +35,9 @@ struct AgendaListBlockView: View {
                 NavigationLink(destination: AgendaDetailEditView(item: agendaItem)) {
                     AgendaRowView(item: agendaItem, onUpdate: refreshHook)
                 }
-                .padding(.vertical, -10)
+                .padding(.vertical, 0)
             }.onDelete(perform: deleteFunc)
-        }
+        }.padding(.vertical, -10)
     }
     
     // TODO: the "delete" is actually a forward, which is the right default
