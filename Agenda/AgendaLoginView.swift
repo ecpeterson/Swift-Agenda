@@ -23,6 +23,7 @@ struct AgendaLoginView: View {
                 .padding()
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
             SecureField("Password", text: $password)
                 .padding()
             
