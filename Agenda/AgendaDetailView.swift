@@ -26,7 +26,23 @@ struct IntField: View {
 }
 
 struct AgendaDetailView: View {
+    let stepperMax = 1000
     @Binding var item: AgendaItem
+    
+    func repeat_str() -> String {
+        switch(item.repeat_p) {
+        case .daily:
+            return (item.frequency > 1 ? "\(item.frequency) " : "") + "day" + (item.frequency > 1 ? "s" : "")
+        case .weekly:
+            return (item.frequency > 1 ? "\(item.frequency) " : "") + "week" + (item.frequency > 1 ? "s" : "")
+        case .monthly:
+            return (item.frequency > 1 ? "\(item.frequency) " : "") + "month" + (item.frequency > 1 ? "s" : "")
+        case .yearly:
+            return (item.frequency > 1 ? "\(item.frequency) " : "") + "year" + (item.frequency > 1 ? "s" : "")
+        case .never:
+            return "never"
+        }
+    }
     
     var body: some View {
         let localDate = Binding<Date>(get: {
@@ -46,17 +62,19 @@ struct AgendaDetailView: View {
                 .datePickerStyle(CompactDatePickerStyle())
             
             HStack {
-                Text("Days until urgent:")
-                // TODO: this isn't being updated.
-                IntField(int: $item.priority)
+                Stepper(value: $item.priority, in: 0...stepperMax) {
+                    Text("Days until urgent: \(item.priority)")
+                }
+//                IntField(int: $item.priority)
             }
             
             Divider()
             
             HStack {
-                Text("Repeat every")
-                // TODO: this isn't being updated.
-                IntField(int: $item.frequency)
+                Stepper(value: $item.frequency, in: 1...stepperMax) {
+                    Text("Repeat every: " + repeat_str())
+                }
+//                IntField(int: $item.frequency)
             }
             
             HStack {
@@ -160,5 +178,6 @@ struct AgendaDetailNewView: View {
 struct AgendaDetailView_Previews: PreviewProvider {
     static var previews: some View {
         AgendaDetailView(item: .constant(agendaData[0]))
+            .environmentObject(UserSettings())
     }
 }
