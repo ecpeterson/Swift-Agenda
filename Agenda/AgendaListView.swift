@@ -72,8 +72,11 @@ struct AgendaListView: View {
             .navigationBarItems(trailing: NavigationLink(destination: AgendaDetailNewView()) {
                     Image(systemName: "plus")
             })
-            .onAppear(perform: refreshList)
             .navigationBarTitle(Text("Agenda"))
+            .onAppear(perform: refreshList)
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    refreshList()
+                }
         }
     }
     
