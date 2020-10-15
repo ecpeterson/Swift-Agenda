@@ -57,10 +57,6 @@ struct AgendaListView: View {
     @State var agendaList: [AgendaItem] = []
     @EnvironmentObject var settings: UserSettings
     
-    init(agendaList: [AgendaItem] = []) {
-        self.agendaList = agendaList
-    }
-    
     var body: some View {
         NavigationView {
             List {
@@ -99,9 +95,9 @@ struct AgendaListView: View {
     }
 }
 
-// TODO: I think I broke this
 struct AgendaListView_Previews: PreviewProvider {
     static var previews: some View {
         AgendaListView(agendaList: agendaData)
+            .environmentObject(UserSettings())
     }
 }
