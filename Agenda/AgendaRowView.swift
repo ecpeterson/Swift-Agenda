@@ -93,9 +93,7 @@ struct AgendaRowView: View {
             [.day],
             from: current_date, to:Date(dateOnly: self.item.date))
         let days_til_due = components.day!
-        
-        print("\(current_date) - \(Date(dateOnly: self.item.date)) = \(days_til_due) vs \(4 * self.item.priority)")
-        
+                
         if days_til_due >= 4 * self.item.priority {
             return "square.fill"
         }
