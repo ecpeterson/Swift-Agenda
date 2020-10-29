@@ -21,6 +21,23 @@
 		389169E3252F9F5800389A1B /* DateOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E2252F9F5800389A1B /* DateOnly.swift */; };
 		389169E82530CEE600389A1B /* ServerComms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E72530CEE600389A1B /* ServerComms.swift */; };
 		38916A0725320FF000389A1B /* AgendaLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38916A0625320FF000389A1B /* AgendaLoginView.swift */; };
+		3891E047253AB4AA008A4BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891E046253AB4AA008A4BE9 /* AppDelegate.swift */; };
+		3891E04B253AB4AB008A4BE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3891E04A253AB4AB008A4BE9 /* Assets.xcassets */; };
+		3891E04E253AB4AB008A4BE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3891E04D253AB4AB008A4BE9 /* Preview Assets.xcassets */; };
+		3891E051253AB4AB008A4BE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3891E04F253AB4AB008A4BE9 /* Main.storyboard */; };
+		3891E05D253AB4AC008A4BE9 /* MacAgendaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891E05C253AB4AC008A4BE9 /* MacAgendaTests.swift */; };
+		3891E068253AB4AC008A4BE9 /* MacAgendaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891E067253AB4AC008A4BE9 /* MacAgendaUITests.swift */; };
+		3891E07A253AB5D7008A4BE9 /* dummyAgenda.json in Resources */ = {isa = PBXBuildFile; fileRef = 3834CEB0252E290600EEFAA6 /* dummyAgenda.json */; };
+		3891E07D253AB5D7008A4BE9 /* DateOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E2252F9F5800389A1B /* DateOnly.swift */; };
+		3891E07F253AB5D7008A4BE9 /* DumbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834CEA7252E287000EEFAA6 /* DumbLoader.swift */; };
+		3891E080253AB5D7008A4BE9 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834CEA1252E265600EEFAA6 /* AgendaItem.swift */; };
+		3891E082253AB5D7008A4BE9 /* ServerComms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389169E72530CEE600389A1B /* ServerComms.swift */; };
+		3891E090253AB646008A4BE9 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891E08F253AB646008A4BE9 /* UserSettings.swift */; };
+		3891E0A5253E8AFE008A4BE9 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891E08F253AB646008A4BE9 /* UserSettings.swift */; };
+		3891E0BB253E8DC1008A4BE9 /* AgendaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A6EFA252D584600D08BAE /* AgendaRowView.swift */; };
+		3891E0CF253FCAB4008A4BE9 /* AgendaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834CEB5252E410D00EEFAA6 /* AgendaDetailView.swift */; };
+		3891E0D6253FDE2D008A4BE9 /* AgendaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A6EFF252D669900D08BAE /* AgendaListView.swift */; };
+		3891E0DD25411EA5008A4BE9 /* AgendaLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38916A0625320FF000389A1B /* AgendaLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +54,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 383A6EC8252D563000D08BAE;
 			remoteInfo = Agenda;
+		};
+		3891E059253AB4AC008A4BE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 383A6EC1252D563000D08BAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3891E043253AB4AA008A4BE9;
+			remoteInfo = MacAgenda;
+		};
+		3891E064253AB4AC008A4BE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 383A6EC1252D563000D08BAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3891E043253AB4AA008A4BE9;
+			remoteInfo = MacAgenda;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -61,6 +92,20 @@
 		389169E2252F9F5800389A1B /* DateOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnly.swift; sourceTree = "<group>"; };
 		389169E72530CEE600389A1B /* ServerComms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerComms.swift; sourceTree = "<group>"; };
 		38916A0625320FF000389A1B /* AgendaLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaLoginView.swift; sourceTree = "<group>"; };
+		3891E044253AB4AA008A4BE9 /* MacAgenda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacAgenda.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3891E046253AB4AA008A4BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3891E04A253AB4AB008A4BE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3891E04D253AB4AB008A4BE9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3891E050253AB4AB008A4BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3891E052253AB4AB008A4BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3891E053253AB4AB008A4BE9 /* MacAgenda.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacAgenda.entitlements; sourceTree = "<group>"; };
+		3891E058253AB4AC008A4BE9 /* MacAgendaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacAgendaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3891E05C253AB4AC008A4BE9 /* MacAgendaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAgendaTests.swift; sourceTree = "<group>"; };
+		3891E05E253AB4AC008A4BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3891E063253AB4AC008A4BE9 /* MacAgendaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacAgendaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3891E067253AB4AC008A4BE9 /* MacAgendaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAgendaUITests.swift; sourceTree = "<group>"; };
+		3891E069253AB4AC008A4BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3891E08F253AB646008A4BE9 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +124,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		383A6EE2252D563100D08BAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E041253AB4AA008A4BE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E055253AB4AC008A4BE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E060253AB4AC008A4BE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,6 +179,9 @@
 				383A6ECB252D563000D08BAE /* Agenda */,
 				383A6EDD252D563100D08BAE /* AgendaTests */,
 				383A6EE8252D563100D08BAE /* AgendaUITests */,
+				3891E045253AB4AA008A4BE9 /* MacAgenda */,
+				3891E05B253AB4AC008A4BE9 /* MacAgendaTests */,
+				3891E066253AB4AC008A4BE9 /* MacAgendaUITests */,
 				383A6ECA252D563000D08BAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +192,9 @@
 				383A6EC9252D563000D08BAE /* Agenda.app */,
 				383A6EDA252D563100D08BAE /* AgendaTests.xctest */,
 				383A6EE5252D563100D08BAE /* AgendaUITests.xctest */,
+				3891E044253AB4AA008A4BE9 /* MacAgenda.app */,
+				3891E058253AB4AC008A4BE9 /* MacAgendaTests.xctest */,
+				3891E063253AB4AC008A4BE9 /* MacAgendaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +205,7 @@
 				3834CEAF252E28EE00EEFAA6 /* Resources */,
 				3834CEA6252E265B00EEFAA6 /* Model */,
 				383A6ECC252D563000D08BAE /* AgendaApp.swift */,
+				3891E08F253AB646008A4BE9 /* UserSettings.swift */,
 				38916A0625320FF000389A1B /* AgendaLoginView.swift */,
 				383A6EFA252D584600D08BAE /* AgendaRowView.swift */,
 				383A6EFF252D669900D08BAE /* AgendaListView.swift */,
@@ -168,6 +241,45 @@
 				383A6EEB252D563100D08BAE /* Info.plist */,
 			);
 			path = AgendaUITests;
+			sourceTree = "<group>";
+		};
+		3891E045253AB4AA008A4BE9 /* MacAgenda */ = {
+			isa = PBXGroup;
+			children = (
+				3891E046253AB4AA008A4BE9 /* AppDelegate.swift */,
+				3891E04A253AB4AB008A4BE9 /* Assets.xcassets */,
+				3891E04F253AB4AB008A4BE9 /* Main.storyboard */,
+				3891E052253AB4AB008A4BE9 /* Info.plist */,
+				3891E053253AB4AB008A4BE9 /* MacAgenda.entitlements */,
+				3891E04C253AB4AB008A4BE9 /* Preview Content */,
+			);
+			path = MacAgenda;
+			sourceTree = "<group>";
+		};
+		3891E04C253AB4AB008A4BE9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3891E04D253AB4AB008A4BE9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3891E05B253AB4AC008A4BE9 /* MacAgendaTests */ = {
+			isa = PBXGroup;
+			children = (
+				3891E05C253AB4AC008A4BE9 /* MacAgendaTests.swift */,
+				3891E05E253AB4AC008A4BE9 /* Info.plist */,
+			);
+			path = MacAgendaTests;
+			sourceTree = "<group>";
+		};
+		3891E066253AB4AC008A4BE9 /* MacAgendaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3891E067253AB4AC008A4BE9 /* MacAgendaUITests.swift */,
+				3891E069253AB4AC008A4BE9 /* Info.plist */,
+			);
+			path = MacAgendaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +338,59 @@
 			productReference = 383A6EE5252D563100D08BAE /* AgendaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		3891E043253AB4AA008A4BE9 /* MacAgenda */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3891E070253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgenda" */;
+			buildPhases = (
+				3891E040253AB4AA008A4BE9 /* Sources */,
+				3891E041253AB4AA008A4BE9 /* Frameworks */,
+				3891E042253AB4AA008A4BE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacAgenda;
+			productName = MacAgenda;
+			productReference = 3891E044253AB4AA008A4BE9 /* MacAgenda.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3891E057253AB4AC008A4BE9 /* MacAgendaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3891E071253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgendaTests" */;
+			buildPhases = (
+				3891E054253AB4AC008A4BE9 /* Sources */,
+				3891E055253AB4AC008A4BE9 /* Frameworks */,
+				3891E056253AB4AC008A4BE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3891E05A253AB4AC008A4BE9 /* PBXTargetDependency */,
+			);
+			name = MacAgendaTests;
+			productName = MacAgendaTests;
+			productReference = 3891E058253AB4AC008A4BE9 /* MacAgendaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3891E062253AB4AC008A4BE9 /* MacAgendaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3891E072253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgendaUITests" */;
+			buildPhases = (
+				3891E05F253AB4AC008A4BE9 /* Sources */,
+				3891E060253AB4AC008A4BE9 /* Frameworks */,
+				3891E061253AB4AC008A4BE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3891E065253AB4AC008A4BE9 /* PBXTargetDependency */,
+			);
+			name = MacAgendaUITests;
+			productName = MacAgendaUITests;
+			productReference = 3891E063253AB4AC008A4BE9 /* MacAgendaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,6 +411,17 @@
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = 383A6EC8252D563000D08BAE;
 					};
+					3891E043253AB4AA008A4BE9 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					3891E057253AB4AC008A4BE9 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 3891E043253AB4AA008A4BE9;
+					};
+					3891E062253AB4AC008A4BE9 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 3891E043253AB4AA008A4BE9;
+					};
 				};
 			};
 			buildConfigurationList = 383A6EC4252D563000D08BAE /* Build configuration list for PBXProject "Agenda" */;
@@ -264,6 +440,9 @@
 				383A6EC8252D563000D08BAE /* Agenda */,
 				383A6ED9252D563100D08BAE /* AgendaTests */,
 				383A6EE4252D563100D08BAE /* AgendaUITests */,
+				3891E043253AB4AA008A4BE9 /* MacAgenda */,
+				3891E057253AB4AC008A4BE9 /* MacAgendaTests */,
+				3891E062253AB4AC008A4BE9 /* MacAgendaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +472,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3891E042253AB4AA008A4BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3891E07A253AB5D7008A4BE9 /* dummyAgenda.json in Resources */,
+				3891E051253AB4AB008A4BE9 /* Main.storyboard in Resources */,
+				3891E04E253AB4AB008A4BE9 /* Preview Assets.xcassets in Resources */,
+				3891E04B253AB4AB008A4BE9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E056253AB4AC008A4BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E061253AB4AC008A4BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -303,6 +507,7 @@
 				383A6F00252D669900D08BAE /* AgendaListView.swift in Sources */,
 				383A6EFB252D584600D08BAE /* AgendaRowView.swift in Sources */,
 				389169E82530CEE600389A1B /* ServerComms.swift in Sources */,
+				3891E090253AB646008A4BE9 /* UserSettings.swift in Sources */,
 				389169E3252F9F5800389A1B /* DateOnly.swift in Sources */,
 				383A6ECD252D563000D08BAE /* AgendaApp.swift in Sources */,
 				3834CEA8252E287000EEFAA6 /* DumbLoader.swift in Sources */,
@@ -328,6 +533,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3891E040253AB4AA008A4BE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3891E082253AB5D7008A4BE9 /* ServerComms.swift in Sources */,
+				3891E0CF253FCAB4008A4BE9 /* AgendaDetailView.swift in Sources */,
+				3891E0BB253E8DC1008A4BE9 /* AgendaRowView.swift in Sources */,
+				3891E07F253AB5D7008A4BE9 /* DumbLoader.swift in Sources */,
+				3891E0D6253FDE2D008A4BE9 /* AgendaListView.swift in Sources */,
+				3891E0DD25411EA5008A4BE9 /* AgendaLoginView.swift in Sources */,
+				3891E047253AB4AA008A4BE9 /* AppDelegate.swift in Sources */,
+				3891E0A5253E8AFE008A4BE9 /* UserSettings.swift in Sources */,
+				3891E080253AB5D7008A4BE9 /* AgendaItem.swift in Sources */,
+				3891E07D253AB5D7008A4BE9 /* DateOnly.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E054253AB4AC008A4BE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3891E05D253AB4AC008A4BE9 /* MacAgendaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3891E05F253AB4AC008A4BE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3891E068253AB4AC008A4BE9 /* MacAgendaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -341,7 +579,28 @@
 			target = 383A6EC8252D563000D08BAE /* Agenda */;
 			targetProxy = 383A6EE6252D563100D08BAE /* PBXContainerItemProxy */;
 		};
+		3891E05A253AB4AC008A4BE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3891E043253AB4AA008A4BE9 /* MacAgenda */;
+			targetProxy = 3891E059253AB4AC008A4BE9 /* PBXContainerItemProxy */;
+		};
+		3891E065253AB4AC008A4BE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3891E043253AB4AA008A4BE9 /* MacAgenda */;
+			targetProxy = 3891E064253AB4AC008A4BE9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3891E04F253AB4AB008A4BE9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3891E050253AB4AB008A4BE9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		383A6EEC252D563100D08BAE /* Debug */ = {
@@ -584,6 +843,138 @@
 			};
 			name = Release;
 		};
+		3891E06A253AB4AC008A4BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacAgenda/MacAgenda.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacAgenda/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacAgenda/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgenda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3891E06B253AB4AC008A4BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacAgenda/MacAgenda.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacAgenda/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacAgenda/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgenda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3891E06C253AB4AC008A4BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacAgendaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgendaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacAgenda.app/Contents/MacOS/MacAgenda";
+			};
+			name = Debug;
+		};
+		3891E06D253AB4AC008A4BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacAgendaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgendaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacAgenda.app/Contents/MacOS/MacAgenda";
+			};
+			name = Release;
+		};
+		3891E06E253AB4AC008A4BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacAgendaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgendaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacAgenda;
+			};
+			name = Debug;
+		};
+		3891E06F253AB4AC008A4BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacAgendaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecpeterson.MacAgendaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacAgenda;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -619,6 +1010,33 @@
 			buildConfigurations = (
 				383A6EF5252D563100D08BAE /* Debug */,
 				383A6EF6252D563100D08BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3891E070253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgenda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3891E06A253AB4AC008A4BE9 /* Debug */,
+				3891E06B253AB4AC008A4BE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3891E071253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgendaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3891E06C253AB4AC008A4BE9 /* Debug */,
+				3891E06D253AB4AC008A4BE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3891E072253AB4AC008A4BE9 /* Build configuration list for PBXNativeTarget "MacAgendaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3891E06E253AB4AC008A4BE9 /* Debug */,
+				3891E06F253AB4AC008A4BE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

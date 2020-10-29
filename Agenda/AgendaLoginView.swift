@@ -19,11 +19,17 @@ struct AgendaLoginView: View {
             
             Spacer()
             
+            #if os(iOS)
             TextField("User name", text: $username)
                 .padding()
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .keyboardType(.emailAddress)
+            #else
+            TextField("User name", text: $username)
+                .padding()
+                .disableAutocorrection(true)
+            #endif
             SecureField("Password", text: $password)
                 .padding()
             
@@ -45,7 +51,7 @@ struct AgendaLoginView: View {
                   password: self.password,
                   doneCallback: { loginResult in
                     DispatchQueue.main.async {
-                        settings.loggedIn = loginResult["loggedIn"]! == "true"
+                        settings.loggedIn = loginResult["loggedIn"] == "true"
                     }
                   })
     }
@@ -56,7 +62,7 @@ struct AgendaLoginView: View {
                    password: self.password,
                    doneCallback: { loginResult in
                     DispatchQueue.main.async {
-                        settings.loggedIn = loginResult["loggedIn"]! == "true"
+                        settings.loggedIn = loginResult["loggedIn"] == "true"
                     }
                    })
     }

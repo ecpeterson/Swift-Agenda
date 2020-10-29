@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-class UserSettings: ObservableObject {
-    @Published var loggedIn : Bool = false
-    var cxn: ServerConnection = ServerConnection()
-    
-    // TODO: on init, test whether logged in by a server query
-}
-
 @main
 struct AgendaApp: App {
     @StateObject var settings: UserSettings = UserSettings()

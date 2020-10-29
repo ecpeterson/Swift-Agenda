@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AgendaItem: Codable {
+struct AgendaItem: Hashable, Codable {
     var text: String = ""
     var complete_p: Bool = false
     var repeat_p: RepeatT = .never

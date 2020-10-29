@@ -12,15 +12,19 @@ struct MyToggleStyle: ToggleStyle {
     let width: CGFloat = 50
     var onColor: Color = Color.blue
     var offColor: Color = Color.gray
-    var offSigil: String = "plus.square.fill"
+    let onSigil: String = "⨉"
+    var offSigil: String = "⨉"
     
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack {
-            Button(action: {}, label: {
-                Image(systemName: configuration.isOn ? "xmark.square.fill" : offSigil)
-                    .foregroundColor(configuration.isOn ?
+            ZStack {
+                Text("⬜️")
+                    .colorMultiply(configuration.isOn ?
                         onColor : offColor)
-            }).onTapGesture {
+                Text(configuration.isOn ? onSigil : offSigil)
+            }
+            .foregroundColor(.white)
+            .onTapGesture {
                 withAnimation {
                     configuration.$isOn.wrappedValue.toggle()
                 }
@@ -29,24 +33,6 @@ struct MyToggleStyle: ToggleStyle {
             configuration.label
             
             Spacer()
-
-//            ZStack(alignment: configuration.isOn ? .trailing : .leading) {
-//                RoundedRectangle(cornerRadius: width/2)
-//                    .frame(width: width, height: width / 2)
-//                    .foregroundColor(configuration.isOn ? self.onColor : self.offColor)
-//
-//                RoundedRectangle(cornerRadius: width/2)
-//                    .frame(width: (width / 2) - 6, height: width / 2 - 6)
-//                    .padding(4)
-//                    .foregroundColor(.white)
-//                    // this used to display days 'til due,
-//                    // + for > 7, " " for no due date, x for done
-//                }
-//            }
-//            .onTapGesture {
-//                withAnimation {
-//                    configuration.$isOn.wrappedValue.toggle()
-//            }
         }
     }
 }
@@ -95,18 +81,18 @@ struct AgendaRowView: View {
         let days_til_due = components.day!
                 
         if days_til_due >= 4 * self.item.priority {
-            return "square.fill"
+            return " "
         }
         
         if days_til_due > 7 {
-            return "plus.square.fill"
+            return "+"
         }
         
         if 0 <= days_til_due && days_til_due <= 7 {
-            return "\(days_til_due).square.fill"
+            return "\(days_til_due)"
         }
         
-        return "exclamationmark.square.fill"
+        return "!"
     }
     
     var body: some View {
@@ -124,7 +110,7 @@ struct AgendaRowView: View {
         })
         
         // use .contextMenu for actions?
-        Toggle(item.text, isOn: toggleBinding)
+        return Toggle(item.text, isOn: toggleBinding)
             .toggleStyle(MyToggleStyle(offColor: self.alertColor(),
                                        offSigil: self.alertSigil()))
     }

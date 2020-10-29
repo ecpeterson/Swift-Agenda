@@ -29,16 +29,26 @@ struct AgendaDetailView: View {
     let stepperMax = 1000
     @Binding var item: AgendaItem
     
+    #if os(iOS)
+    let repeatPickerStyle = SegmentedPickerStyle()
+    let datePickerStyle = CompactDatePickerStyle()
+    let pickerPadding: CGFloat = 0
+    #else
+    let repeatPickerStyle = DefaultPickerStyle()
+    let datePickerStyle = DefaultDatePickerStyle()
+    let pickerPadding: CGFloat = -10
+    #endif
+    
     func repeat_str() -> String {
         switch(item.repeat_p) {
         case .daily:
-            return (item.frequency > 1 ? "\(item.frequency) " : "") + "day" + (item.frequency > 1 ? "s" : "")
+            return "\(item.frequency) day" + (item.frequency > 1 ? "s" : "")
         case .weekly:
-            return (item.frequency > 1 ? "\(item.frequency) " : "") + "week" + (item.frequency > 1 ? "s" : "")
+            return "\(item.frequency) week" + (item.frequency > 1 ? "s" : "")
         case .monthly:
-            return (item.frequency > 1 ? "\(item.frequency) " : "") + "month" + (item.frequency > 1 ? "s" : "")
+            return "\(item.frequency) month" + (item.frequency > 1 ? "s" : "")
         case .yearly:
-            return (item.frequency > 1 ? "\(item.frequency) " : "") + "year" + (item.frequency > 1 ? "s" : "")
+            return "\(item.frequency) year" + (item.frequency > 1 ? "s" : "")
         case .never:
             return "never"
         }
@@ -51,46 +61,73 @@ struct AgendaDetailView: View {
             self.item.date = DateOnly(date: newValue)
         })
         
-        VStack {
-            TextField("To-do item", text: $item.text)
-            Toggle("Completed", isOn: $item.complete_p)
-            
-            Divider()
-            
-            DatePicker("Date", selection: localDate,
-                       displayedComponents: .date)
-                .datePickerStyle(CompactDatePickerStyle())
-            
-            HStack {
-                Stepper(value: $item.priority, in: 0...stepperMax) {
-                    Text("Days until urgent: \(item.priority)")
-                }
-//                IntField(int: $item.priority)
+        return Form {
+            Section {
+                TextField("To-do item", text: $item.text)
+                Toggle("Completed", isOn: $item.complete_p)
             }
             
-            Divider()
-            
-            HStack {
-                Stepper(value: $item.frequency, in: 1...stepperMax) {
-                    Text("Repeat every: " + repeat_str())
+            Section {
+                HStack {
+                    DatePicker("Date", selection: localDate,
+                               displayedComponents: .date)
+                        .datePickerStyle(datePickerStyle)
                 }
-//                IntField(int: $item.frequency)
+                
+                HStack {
+                    #if os(iOS)
+                    Text("\(item.priority) days 'til urgent")
+                    #endif
+                    Stepper("", value: $item.priority, in: 0...stepperMax)
+                        .padding(.top, pickerPadding)
+                    #if os(macOS)
+                    Text("\(item.priority) days until urgent")
+                    #endif
+                }
             }
             
-            HStack {
-                // TODO: show selection, then click text to reveal picker
-                Picker("Repeat", selection: $item.repeat_p) {
-                    Text("Never").tag(RepeatT.never)
-                    Text("Days").tag(RepeatT.daily)
-                    Text("Weeks").tag(RepeatT.weekly)
-                    Text("Months").tag(RepeatT.monthly)
-                    Text("Years").tag(RepeatT.yearly)
+            Section {
+                HStack {
+                    #if os(macOS)
+                    Text("Repeat every")
+                    #else
+                    Text("Every \(repeat_str())")
+                    #endif
+                    Stepper("", value: $item.frequency, in: 1...stepperMax)
+                        .padding(.top, pickerPadding)
+                    #if os(macOS)
+                    Text(repeat_str())
+                    #endif
                 }
-                .pickerStyle(SegmentedPickerStyle())
+                
+                HStack {
+                    // TODO: show selection, then click text to reveal picker
+                    Picker("Repeat", selection: $item.repeat_p) {
+                        Text("Never").tag(RepeatT.never)
+                        Text("Days").tag(RepeatT.daily)
+                        Text("Weeks").tag(RepeatT.weekly)
+                        Text("Months").tag(RepeatT.monthly)
+                        Text("Years").tag(RepeatT.yearly)
+                    }
+                    .pickerStyle(repeatPickerStyle)
+                }
             }
         }
     }
 }
+
+#if os(macOS)
+enum DisplayModeEnum {
+    case inline
+}
+
+extension View {
+    func navigationBarTitle(_ title: Text,
+                            displayMode: DisplayModeEnum) -> some View {
+        self
+    }
+}
+#endif
 
 struct AgendaDetailEditView: View {
     @State var item: AgendaItem
@@ -98,23 +135,49 @@ struct AgendaDetailEditView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            AgendaDetailView(item: $item)
-            Spacer()
-            HStack {
+        NavigationView {
+            VStack {
+                AgendaDetailView(item: $item)
                 Spacer()
-                Button(action: forward) {
-                    Image(systemName: "goforward")
-                }
-                Spacer()
-                Button(action: delete) {
-                    Image(systemName: "trash")
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        #if os(iOS)
+                        Image(systemName: "xmark")
+                        #else
+                        Text("Cancel")
+                        #endif
+                    }
+                    Spacer()
+                    Button(action: delete) {
+                        #if os(iOS)
+                        Image(systemName: "trash")
+                        #else
+                        Text("Delete")
+                        #endif
+                    }
+                    Spacer()
+                    Button(action: forward) {
+                        #if os(iOS)
+                        Image(systemName: "goforward")
+                        #else
+                        Text("Forward")
+                        #endif
+                    }
+                    Spacer()
+                    Button(action: update) {
+                        #if os(iOS)
+                        Image(systemName: "checkmark")
+                        #else
+                        Text("Confirm")
+                        #endif
+                    }
                 }
             }
+            .padding()
+            .navigationBarTitle(Text("Item details"), displayMode: .inline)
         }
-        .padding()
-        .navigationBarTitle(Text("Item details"), displayMode: .inline)
-        .navigationBarItems(trailing: Button("Confirm", action: update))
     }
     
     func delete() {
@@ -154,14 +217,33 @@ struct AgendaDetailNewView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            AgendaDetailView(item: $item)
-            Spacer()
-        }
+        NavigationView {
+            VStack {
+                AgendaDetailView(item: $item)
+                Spacer()
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        #if os(iOS)
+                        Image(systemName: "xmark")
+                        #else
+                        Text("Cancel")
+                        #endif
+                    }
+                    Spacer()
+                    Button(action: commit) {
+                        #if os(iOS)
+                        Image(systemName: "checkmark")
+                        #else
+                        Text("Confirm")
+                        #endif
+                    }
+                }
+            }
             .padding()
             .navigationBarTitle(Text("New item"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button("Confirm", action: commit))
+        }
     }
     
     func commit() {
@@ -177,7 +259,7 @@ struct AgendaDetailNewView: View {
 
 struct AgendaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        AgendaDetailView(item: .constant(agendaData[0]))
+        AgendaDetailEditView(item: agendaData[0])
             .environmentObject(UserSettings())
     }
 }

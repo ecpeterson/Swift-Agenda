@@ -6,7 +6,6 @@
 //  Borrowed from https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation
 //
 
-import UIKit
 import SwiftUI
 import CoreLocation
 
