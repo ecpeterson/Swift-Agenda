@@ -12,6 +12,12 @@ struct AgendaLoginView: View {
     @State var password: String = ""
     @EnvironmentObject var settings: UserSettings
     
+    init() {
+        let credentials = getCredentials()
+        _username = .init(initialValue: credentials?.username ?? "")
+        _password = .init(initialValue: credentials?.password ?? "")
+    }
+    
     var body: some View {
         VStack {
             Text("Log in")
@@ -51,6 +57,7 @@ struct AgendaLoginView: View {
                   password: self.password,
                   doneCallback: { loginResult in
                     DispatchQueue.main.async {
+                        try? setCredentials(credentials: Credentials(username: self.username, password: self.password))
                         settings.loggedIn = loginResult["loggedIn"] == "true"
                     }
                   })
@@ -62,6 +69,7 @@ struct AgendaLoginView: View {
                    password: self.password,
                    doneCallback: { loginResult in
                     DispatchQueue.main.async {
+                        try? setCredentials(credentials: Credentials(username: self.username, password: self.password))
                         settings.loggedIn = loginResult["loggedIn"] == "true"
                     }
                    })

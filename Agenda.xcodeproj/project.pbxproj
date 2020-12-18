@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38258E59258D22E40055DF79 /* AgendaKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38258E58258D22E40055DF79 /* AgendaKeychain.swift */; };
+		38258E66258D2CBA0055DF79 /* AgendaKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38258E58258D22E40055DF79 /* AgendaKeychain.swift */; };
 		3834CEA2252E265600EEFAA6 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834CEA1252E265600EEFAA6 /* AgendaItem.swift */; };
 		3834CEA8252E287000EEFAA6 /* DumbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834CEA7252E287000EEFAA6 /* DumbLoader.swift */; };
 		3834CEB1252E290600EEFAA6 /* dummyAgenda.json in Resources */ = {isa = PBXBuildFile; fileRef = 3834CEB0252E290600EEFAA6 /* dummyAgenda.json */; };
@@ -72,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38258E58258D22E40055DF79 /* AgendaKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaKeychain.swift; sourceTree = "<group>"; };
 		3834CEA1252E265600EEFAA6 /* AgendaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		3834CEA7252E287000EEFAA6 /* DumbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbLoader.swift; sourceTree = "<group>"; };
 		3834CEB0252E290600EEFAA6 /* dummyAgenda.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dummyAgenda.json; sourceTree = "<group>"; };
@@ -213,6 +216,7 @@
 				383A6ED0252D563100D08BAE /* Assets.xcassets */,
 				383A6ED5252D563100D08BAE /* Info.plist */,
 				383A6ED2252D563100D08BAE /* Preview Content */,
+				38258E58258D22E40055DF79 /* AgendaKeychain.swift */,
 			);
 			path = Agenda;
 			sourceTree = "<group>";
@@ -398,7 +402,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					383A6EC8252D563000D08BAE = {
 						CreatedOnToolsVersion = 12.0;
@@ -510,6 +514,7 @@
 				3891E090253AB646008A4BE9 /* UserSettings.swift in Sources */,
 				389169E3252F9F5800389A1B /* DateOnly.swift in Sources */,
 				383A6ECD252D563000D08BAE /* AgendaApp.swift in Sources */,
+				38258E59258D22E40055DF79 /* AgendaKeychain.swift in Sources */,
 				3834CEA8252E287000EEFAA6 /* DumbLoader.swift in Sources */,
 				38916A0725320FF000389A1B /* AgendaLoginView.swift in Sources */,
 				3834CEA2252E265600EEFAA6 /* AgendaItem.swift in Sources */,
@@ -543,6 +548,7 @@
 				3891E07F253AB5D7008A4BE9 /* DumbLoader.swift in Sources */,
 				3891E0D6253FDE2D008A4BE9 /* AgendaListView.swift in Sources */,
 				3891E0DD25411EA5008A4BE9 /* AgendaLoginView.swift in Sources */,
+				38258E66258D2CBA0055DF79 /* AgendaKeychain.swift in Sources */,
 				3891E047253AB4AA008A4BE9 /* AppDelegate.swift in Sources */,
 				3891E0A5253E8AFE008A4BE9 /* UserSettings.swift in Sources */,
 				3891E080253AB5D7008A4BE9 /* AgendaItem.swift in Sources */,
@@ -849,6 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MacAgenda/MacAgenda.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MacAgenda/Preview Content\"";
@@ -872,6 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MacAgenda/MacAgenda.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MacAgenda/Preview Content\"";

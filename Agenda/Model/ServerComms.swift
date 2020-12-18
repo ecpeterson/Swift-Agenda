@@ -7,6 +7,8 @@
 
 import Foundation
 
+let server = "https://agenda.chromotopy.org"
+
 enum ServerCommsError: Error {
     case noDataReceived
     case loggedOut
@@ -18,7 +20,7 @@ enum ServerCommsError: Error {
 class ServerConnection: ObservableObject {
     // COMMUNICATION CONFIGURATION =============================================
     
-    let baseURL = URL(string: "https://agenda.chromotopy.org:8091")
+    let baseURL = URL(string: server + ":8091")
     let session = URLSession(configuration: .default)
     
     // COMMUNICATION WRAPPERS ==================================================
