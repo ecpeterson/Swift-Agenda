@@ -134,6 +134,7 @@ struct AgendaDetailEditView: View {
     @EnvironmentObject var settings: UserSettings
     @Environment(\.presentationMode) var presentationMode
     
+    #if os(iOS)
     var body: some View {
         NavigationView {
             VStack {
@@ -143,35 +144,19 @@ struct AgendaDetailEditView: View {
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        #if os(iOS)
                         Image(systemName: "xmark")
-                        #else
-                        Text("Cancel")
-                        #endif
                     }
                     Spacer()
                     Button(action: delete) {
-                        #if os(iOS)
                         Image(systemName: "trash")
-                        #else
-                        Text("Delete")
-                        #endif
                     }
                     Spacer()
                     Button(action: forward) {
-                        #if os(iOS)
                         Image(systemName: "goforward")
-                        #else
-                        Text("Forward")
-                        #endif
                     }
                     Spacer()
                     Button(action: update) {
-                        #if os(iOS)
                         Image(systemName: "checkmark")
-                        #else
-                        Text("Confirm")
-                        #endif
                     }
                 }
             }
@@ -179,6 +164,34 @@ struct AgendaDetailEditView: View {
             .navigationBarTitle(Text("Item details"), displayMode: .inline)
         }
     }
+    #else
+    var body: some View {
+        VStack {
+            AgendaDetailView(item: $item)
+            Spacer()
+            HStack {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Cancel")
+                }
+                Spacer()
+                Button(action: delete) {
+                    Text("Delete")
+                }
+                Spacer()
+                Button(action: forward) {
+                    Text("Forward")
+                }
+                Spacer()
+                Button(action: update) {
+                    Text("Confirm")
+                }
+            }
+        }
+        .padding()
+    }
+    #endif
     
     func delete() {
         settings.cxn.delete(
@@ -216,6 +229,7 @@ struct AgendaDetailNewView: View {
     @EnvironmentObject var settings: UserSettings
     @Environment(\.presentationMode) var presentationMode
     
+    #if os(iOS)
     var body: some View {
         NavigationView {
             VStack {
@@ -225,19 +239,11 @@ struct AgendaDetailNewView: View {
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        #if os(iOS)
                         Image(systemName: "xmark")
-                        #else
-                        Text("Cancel")
-                        #endif
                     }
                     Spacer()
                     Button(action: commit) {
-                        #if os(iOS)
                         Image(systemName: "checkmark")
-                        #else
-                        Text("Confirm")
-                        #endif
                     }
                 }
             }
@@ -245,6 +251,25 @@ struct AgendaDetailNewView: View {
             .navigationBarTitle(Text("New item"), displayMode: .inline)
         }
     }
+    #else
+    var body: some View {
+        VStack {
+            AgendaDetailView(item: $item)
+            Spacer()
+            HStack {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Cancel")
+                }
+                Spacer()
+                Button(action: commit) {
+                    Text("Confirm")
+                }
+            }
+        }.padding()
+    }
+    #endif
     
     func commit() {
         settings.cxn.new(
